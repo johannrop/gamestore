@@ -2,7 +2,7 @@
 package ModeloDAO;
 
 import Config.Conexion;
-import Intefaces.CRUD;
+import Interfaces.CRUD;
 import Modelo.Persona;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,7 +31,7 @@ public class PersonaDAO implements CRUD{
                 per.setNombre(rs.getString("clie_nombres"));
                 per.setApellidos(rs.getString("clie_apellidos"));
                 per.setDireccion(rs.getString("clie_direccion"));
-                per.setTelefono(rs.getInt("clie_telefono"));
+                per.setTelefono(rs.getString("clie_telefono"));
                 list.add(per);
             }
         } catch (Exception e) {
@@ -41,7 +41,7 @@ public class PersonaDAO implements CRUD{
 
     @Override
     public Persona list(int id) {
-        String sql="select * from clientes where Id="+id;
+        String sql="select * from clientes where clie_id="+id;
         try {
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -51,8 +51,8 @@ public class PersonaDAO implements CRUD{
                 p.setNombre(rs.getString("clie_nombres"));
                 p.setApellidos(rs.getString("clie_apellidos"));
                 p.setDireccion(rs.getString("clie_direccion"));
-                p.setTelefono(rs.getInt("clie_telefono"));
-                
+                p.setTelefono(rs.getString("clie_telefono"));
+                System.out.print("ver");
             }
         } catch (Exception e) {
         }
@@ -61,21 +61,21 @@ public class PersonaDAO implements CRUD{
 
     @Override
     public boolean add(Persona per) {
-       String sql="insert into clientes(nombres,apellidos,direccion,telefono)values('"+per.getNombre()+"','"+per.getApellidos()+"',"
-               + "'"+per.getDireccion()+"','"+per.getTelefono()+"')";
+       String sql="insert into clientes(clie_nombres,clie_apellidos,clie_direccion,clie_telefono)"
+               + "values('"+per.getNombre()+"','"+per.getApellidos()+"','"+per.getDireccion()+"','"+per.getTelefono()+"')";
         try {
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
             ps.executeUpdate();
         } catch (Exception e) {
+          
         }
        return false;
     }
 
     @Override
     public boolean edit(Persona per) {
-        String sql="update persona set nombres='"+per.getNombre()+"',apellidos='"+per.getApellidos()+"',"
-                + "direccion='"+per.getDireccion()+"',telefono='"+per.getTelefono()+"' where Id="+per.getId();
+        String sql="update clientes set clie_nombres='"+per.getNombre()+"',clie_apellidos='"+per.getApellidos()+"',clie_direccion='"+per.getDireccion()+"',clie_telefono='"+per.getTelefono()+"' where clie_id="+per.getId();
         try {
             con=cn.getConnection();
             ps=con.prepareStatement(sql);

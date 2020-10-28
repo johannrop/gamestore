@@ -1,17 +1,23 @@
-<%-- 
-    Document   : index
-    Created on : 27/10/2020, 10:48:14 PM
-    Author     : future
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="./css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <br>
+        <br>
+        <div class="container" >
+            <a class="btn btn-success btn-lg"  href="Controlador?accion=listar">Clientes</a>
+        </div>
+        
+        <br>
+        <div class="container" >
+            <a class="btn btn-success btn-lg"  href="Controlador?accion=listarJu">Juegos</a>
+        </div>
+       
     </body>
 </html>
