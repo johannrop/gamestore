@@ -15,6 +15,7 @@
         <div class="container">
             <h1>Clientes</h1>
             <a class="btn btn-success" href="Controlador?accion=add">Agregar Nuevo</a>
+            <a class="btn btn-info" href="index.jsp">Inicio</a>
             <br>
             <br>
             <table class="table table-bordered">

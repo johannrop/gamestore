@@ -16,7 +16,7 @@
         
         <br>
         <div class="container" >
-            <a class="btn btn-success btn-lg"  href="Controlador?accion=listarJu">Juegos</a>
+            <a class="btn btn-success btn-lg"  href="Controlador?accion=listarJue">Juegos</a>
         </div>
        
     </body>

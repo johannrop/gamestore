@@ -1,7 +1,9 @@
 
 package Controlador;
 
+import Modelo.Juego;
 import Modelo.Persona;
+import ModeloDAO.JuegoDAO;
 import ModeloDAO.PersonaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,12 +16,21 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Controlador extends HttpServlet {
 
+    String listarJue="vistas/listarJue.jsp";
     String listar="vistas/listar.jsp";
     String add="vistas/add.jsp";
+    String addJue="vistas/addJue.jsp";
     String edit="vistas/edit.jsp";
+    String editJue="vistas/editJue.jsp";
+    
     Persona p=new Persona();
     PersonaDAO dao=new PersonaDAO();
+    
+    Juego j=new Juego();
+    JuegoDAO daoJ=new JuegoDAO();
+    
     int id;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -43,10 +54,17 @@ public class Controlador extends HttpServlet {
             throws ServletException, IOException {
         String acceso="";
         String action=request.getParameter("accion");
+        
         if(action.equalsIgnoreCase("listar")){
             acceso=listar;            
-        }else if(action.equalsIgnoreCase("add")){
+        }else if(action.equalsIgnoreCase("listarJue")){
+            acceso=listarJue;            
+        }
+        else if(action.equalsIgnoreCase("add")){
             acceso=add;
+        }
+        else if(action.equalsIgnoreCase("addJue")){
+            acceso=addJue;
         }
         else if(action.equalsIgnoreCase("Agregar")){
             String nom=request.getParameter("txtnom");
@@ -60,9 +78,40 @@ public class Controlador extends HttpServlet {
             dao.add(p);
             acceso=listar;
         }
+        
+        else if(action.equalsIgnoreCase("AgregarJue")){
+            String nom=request.getParameter("txtnom");
+            String anho=request.getParameter("txtanho");
+            String prot=request.getParameter("txtprot");
+            String dir=request.getParameter("txtdir");
+            String prod=request.getParameter("txtprod");
+            String tec=request.getParameter("txttec");
+            String can=request.getParameter("txtcan");
+            String preV=request.getParameter("txtpreV");
+            String preA=request.getParameter("txtpreA");
+            
+            j.setNombre(nom);
+            j.setAnho(anho);
+            j.setProtagonista(prot);
+            j.setDirector(dir);       
+            j.setProductor(prod);
+            j.setTecnologia(tec);
+            j.setDirector(can);
+            j.setCantidad(preV);
+            j.setPreciVenta(preV);
+            j.setPrecioAlquiler(preA);
+            daoJ.add(j);
+            acceso=listarJue;
+        }
         else if(action.equalsIgnoreCase("editar")){
             request.setAttribute("idper",request.getParameter("id"));
             acceso=edit;
+        }
+        
+        
+        else if(action.equalsIgnoreCase("editarJue")){
+            request.setAttribute("idper",request.getParameter("id"));
+            acceso=editJue;
         }
         else if(action.equalsIgnoreCase("Actualizar")){
             id=Integer.parseInt(request.getParameter("txtid"));
@@ -78,12 +127,48 @@ public class Controlador extends HttpServlet {
             dao.edit(p);
             acceso=listar;
         }
+        
+        else if(action.equalsIgnoreCase("ActualizarJue")){
+            id=Integer.parseInt(request.getParameter("txtid"));
+            String nom=request.getParameter("txtnom");
+            String anho=request.getParameter("txtanho");
+            String prot=request.getParameter("txtprot");
+            String dir=request.getParameter("txtdir");
+            String prod=request.getParameter("txtprod");
+            String tec=request.getParameter("txttec");
+            String can=request.getParameter("txtcan");
+            String preV=request.getParameter("txtpreV");
+            String preA=request.getParameter("txtpreA");
+            
+            j.setId(id);
+            j.setNombre(nom);
+            j.setAnho(anho);
+            j.setProtagonista(prot);
+            j.setDirector(dir);       
+            j.setProductor(prod);
+            j.setTecnologia(tec);
+            j.setDirector(can);
+            j.setCantidad(preV);
+            j.setPreciVenta(preV);
+            j.setPrecioAlquiler(preA);
+            daoJ.add(j);
+            acceso=listarJue;
+        }
+        
         else if(action.equalsIgnoreCase("eliminar")){
             id=Integer.parseInt(request.getParameter("id"));
             p.setId(id);
             dao.eliminar(id);
             acceso=listar;
         }
+        
+        else if(action.equalsIgnoreCase("eliminarJue")){
+            id=Integer.parseInt(request.getParameter("id"));
+            j.setId(id);
+            daoJ.eliminar(id);
+            acceso=listarJue;
+        }
+        
         RequestDispatcher vista=request.getRequestDispatcher(acceso);
         vista.forward(request, response);
     }
