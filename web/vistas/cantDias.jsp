@@ -12,7 +12,7 @@
                 <h1>Número de dias</h1>
                 <form action="Controlador">
                     
-                    <input class="form-control" type="text" name="txtdias"><br>                             
+                    <input class="form-control" type="number" name="txtdias"><br>                             
                     <input class="btn btn-primary" type="submit" name="accion" value="AgregarAl">
                     <a href="index.jsp">Regresar</a>
                 </form>

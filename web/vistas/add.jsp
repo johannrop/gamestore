@@ -18,7 +18,7 @@
                     DIRECCION:<br>
                     <input class="form-control" type="text" name="txtdire"><br>
                     TELEFONO: <br>
-                    <input class="form-control" type="text" name="txttel"><br>
+                    <input class="form-control" type="number" name="txttel"><br>
                     
                     
                     <input class="btn btn-primary" type="submit" name="accion" value="Agregar">

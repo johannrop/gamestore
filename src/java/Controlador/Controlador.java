@@ -156,11 +156,10 @@ public class Controlador extends HttpServlet {
             j.setDirector(dir);       
             j.setProductor(prod);
             j.setTecnologia(tec);
-            j.setDirector(can);
-            j.setCantidad(preV);
+            j.setCantidad(can);
             j.setPreciVenta(preV);
             j.setPrecioAlquiler(preA);
-            daoJ.add(j);
+            daoJ.edit(j);
             acceso=listarJue;
         }
         

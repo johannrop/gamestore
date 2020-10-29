@@ -25,7 +25,7 @@
                 Direccion: <br>
                 <input class="form-control" type="text" name="txtdire" value="<%= p.getDireccion()%>"><br>
                 Telefono: <br>
-                <input class="form-control" type="text" name="txttel" value="<%= p.getTelefono()%>"><br>
+                <input class="form-control" type="number" name="txttel" value="<%= p.getTelefono()%>"><br>
                 
                 <input type="hidden" name="txtid" value="<%= p.getId()%>">
                 <input class="btn btn-primary" type="submit" name="accion" value="actualizar"> 

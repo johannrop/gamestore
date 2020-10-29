@@ -14,7 +14,7 @@
                     NOMBRE: <br>
                     <input class="form-control" type="text" name="txtnom"><br>
                     AÑO:<br>
-                    <input class="form-control" type="text" name="txtanho"><br>
+                    <input class="form-control" type="number" name="txtanho"><br>
                     PROTAGONISTA: <br>
                     <input class="form-control" type="text" name="txtprot"><br>
                     DIRECTOR: <br>
@@ -24,11 +24,11 @@
                     TECNOLOGIA: <br>
                     <input class="form-control" type="text" name="txttec"><br>
                     CANTIDAD: <br>
-                    <input class="form-control" type="text" name="txtcan"><br>
+                    <input class="form-control" type="number" name="txtcan"><br>
                     PRECIO DE VENTA: <br>
-                    <input class="form-control" type="text" name="txtpreV"><br>
+                    <input class="form-control" type="number" name="txtpreV"><br>
                     PRECIO DE ALQUILER: <br>
-                    <input class="form-control" type="text" name="txtpreA"><br>
+                    <input class="form-control" type="number" name="txtpreA"><br>
                     
                     
                     <input class="btn btn-primary" type="submit" name="accion" value="AgregarJue">
