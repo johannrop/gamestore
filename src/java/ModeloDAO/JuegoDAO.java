@@ -88,13 +88,13 @@ public class JuegoDAO implements CRUDjue{
     }
 
     
+    @Override
     public boolean edit(Juego per) {
         String sql="update juegos set jueg_nombre='"+per.getNombre()+"',jueg_anho='"+per.getAnho()+"',"
                 + "jueg_protagonista='"+per.getProtagonista()+"',jueg_director='"+per.getDirector()+"',"
                 + "jueg_productor='"+per.getProductor()+"',jueg_tecnologia='"+per.getTecnologia()+"',"
-                + "jueg_cantidad='"+per.getCantidad()+"',jueg_precio_venta='"+per.getPreciVenta()+"',"
-                + "jueg_precio_alquiler='"+per.getPrecioAlquiler()+"'"
-                + " where jueg_id='"+per.getId()+"'";
+                + "jueg_cantidad='"+per.getCantidad()+"',jueg_precio_venta='"+per.getPreciVenta()+"', "
+                + "jueg_precio_alquiler='"+per.getPrecioAlquiler()+"' where jueg_id="+per.getId();
         try {
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -103,6 +103,7 @@ public class JuegoDAO implements CRUDjue{
         }
         return false;
     }
+    
 
     @Override
     public boolean eliminar(int id) {
