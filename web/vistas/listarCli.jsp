@@ -12,8 +12,7 @@
     </head>
     <body>
         <div class="container">
-            <h1>Clientes</h1>
-            <a class="btn btn-success" href="Controlador?accion=add">Agregar Nuevo</a>
+            <h1>Seleccione el cliente</h1>
             <a class="btn btn-info" href="index.jsp">Inicio</a>
             <br>
             <br>
@@ -23,8 +22,7 @@
                         <th class="text-center">ID</th>
                         <th class="text-center">NOMBRES</th>
                         <th class="text-center">APELLIDOS</th>
-                        <th class="text-center">DIRECCION</th>
-                        <th class="text-center">TELEFONO</th>
+                        
                     </tr>
                 </thead>
                 <%
@@ -41,12 +39,11 @@
                         <td class="text-center"><%= per.getId()%></td>
                         <td class="text-center"><%= per.getNombre()%></td>
                         <td class="text-center"><%= per.getApellidos()%></td>
-                        <td class="text-center"><%= per.getDireccion()%></td>
-                        <td class="text-center"><%= per.getTelefono()%></td>
+                        
             
                         <td class="text-center">
-                            <a class="btn btn-warning" href="Controlador?accion=editar&id=<%= per.getId()%>">Editar</a>
-                            <a class="btn btn-danger" href="Controlador?accion=eliminar&id=<%= per.getId()%>">Remove</a>
+                            <a class="btn btn-warning" href="Controlador?accion=cantDias&id=<%= per.getId()%>">Seleccionar</a>
+                            
                         </td>
                     </tr>
                     <%}%>

@@ -58,9 +58,9 @@ public class JuegoDAO implements CRUDjue{
                 p.setAnho(rs.getString("jueg_anho"));
                 p.setProtagonista(rs.getString("jueg_protagonista"));
                 p.setDirector(rs.getString("jueg_director"));
-                p.setTecnologia(rs.getString("jueg_productor"));
-                p.setCantidad(rs.getString("jueg_tecnologia"));
-                p.setDirector(rs.getString("jueg_cantidad"));
+                p.setProductor(rs.getString("jueg_productor"));
+                p.setTecnologia(rs.getString("jueg_tecnologia"));
+                p.setCantidad(rs.getString("jueg_cantidad"));              
                 p.setPreciVenta(rs.getString("jueg_precio_venta"));
                 p.setPrecioAlquiler(rs.getString("jueg_precio_alquiler"));
             }
@@ -89,7 +89,12 @@ public class JuegoDAO implements CRUDjue{
 
     
     public boolean edit(Juego per) {
-        String sql="update juegos set jueg_nombre='"+per.getNombre()+"',jueg_anho='"+per.getAnho()+"',jueg_protagonista='"+per.getProtagonista()+"',jueg_director='"+per.getDirector()+"',jueg_productor='"+per.getProductor()+"',jueg_tecnologia='"+per.getTecnologia()+"',jueg_cantidad='"+per.getCantidad()+"',jueg_precio_venta='"+per.getPreciVenta()+"',jueg_precio_alquiler='"+per.getPrecioAlquiler()+"' where jueg_id="+per.getId();
+        String sql="update juegos set jueg_nombre='"+per.getNombre()+"',jueg_anho='"+per.getAnho()+"',"
+                + "jueg_protagonista='"+per.getProtagonista()+"',jueg_director='"+per.getDirector()+"',"
+                + "jueg_productor='"+per.getProductor()+"',jueg_tecnologia='"+per.getTecnologia()+"',"
+                + "jueg_cantidad='"+per.getCantidad()+"',jueg_precio_venta='"+per.getPreciVenta()+"',"
+                + "jueg_precio_alquiler='"+per.getPrecioAlquiler()+"'"
+                + " where jueg_id='"+per.getId()+"'";
         try {
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -111,10 +116,4 @@ public class JuegoDAO implements CRUDjue{
         return false;
     }
 
-   
-
-    
-    
-   
-    
 }

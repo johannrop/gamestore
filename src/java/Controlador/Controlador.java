@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Controlador extends HttpServlet {
 
+    String cantDias="vistas/cantDias.jsp";
+    String listarCli="vistas/listarCli.jsp";
+    String alquiler="vistas/alquiler.jsp";
     String listarJue="vistas/listarJue.jsp";
     String listar="vistas/listar.jsp";
     String add="vistas/add.jsp";
@@ -30,6 +33,8 @@ public class Controlador extends HttpServlet {
     JuegoDAO daoJ=new JuegoDAO();
     
     int id;
+    int idJue;
+    int dias;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -59,7 +64,11 @@ public class Controlador extends HttpServlet {
             acceso=listar;            
         }else if(action.equalsIgnoreCase("listarJue")){
             acceso=listarJue;            
+        }else if(action.equalsIgnoreCase("alquiler")){
+            acceso=alquiler;            
         }
+        
+        
         else if(action.equalsIgnoreCase("add")){
             acceso=add;
         }
@@ -164,10 +173,39 @@ public class Controlador extends HttpServlet {
         
         else if(action.equalsIgnoreCase("eliminarJue")){
             id=Integer.parseInt(request.getParameter("id"));
+            
             j.setId(id);
             daoJ.eliminar(id);
             acceso=listarJue;
         }
+        
+        
+        
+        
+        
+        
+        else if(action.equalsIgnoreCase("cliente")){
+            id=Integer.parseInt(request.getParameter("id"));
+            idJue=id;
+            acceso=listarCli;
+            
+        }
+        
+        else if(action.equalsIgnoreCase("cantDias")){
+            dias=Integer.parseInt(request.getParameter("id"));
+            acceso=cantDias;
+        }
+        
+        else if(action.equalsIgnoreCase("alquiJue")){
+            id=Integer.parseInt(request.getParameter("id"));
+            p.setId(id);
+            dao.alquilarJ(id,idJue,dias);
+            acceso=listar;
+        }
+        
+        
+        
+        
         
         RequestDispatcher vista=request.getRequestDispatcher(acceso);
         vista.forward(request, response);

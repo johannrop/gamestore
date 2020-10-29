@@ -97,4 +97,16 @@ public class PersonaDAO implements CRUD{
         return false;
     }
     
+    public boolean alquilarJ(int id,int idJ, int dias) {
+        String sql="insert into alquileres(jueg_id,jueg_fecha_entrega) values ("+idJ+",interval "+dias+" day)";
+               
+        try {
+            con=cn.getConnection();
+            ps=con.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return false;
+    }
+    
 }
